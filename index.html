@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+	<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="./dtb.js"></script>
+	<title>Dancing Teacher Box</title>
+</head>
+<body>
+    
+<h1>Dancing Teacher Box</h1>
+
+<div class="demo-grid-ruler mdl-grid">
+	<div class="mdl-cell" id="movie"></div>
+	<div class="mdl-cell"><video id="myVideo" width="640" height="390" autoplay="1" ></video></div>
+	<script type="text/javascript">
+		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || window.navigator.mozGetUserMedia;
+		window.URL = window.URL || window.webkitURL;
+		var video = document.getElementById('myVideo');
+		var localStream = null;
+		navigator.getUserMedia({video: true, audio: false}, 
+			function(stream) { // for success case
+				console.log(stream);
+				video.src = window.URL.createObjectURL(stream);
+			},
+			function(err) { // for error case
+				console.log(err);
+			}
+		);
+	</script>
+</div>
+<div class="demo-grid-ruler mdl-grid" style="margin-left: 8px">
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="play">再生</button>　
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="pause">一時停止</button>　
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="prev">1分前へ</button>　
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="next">1分先へ</button>
+</div>
+
+</body>
+</html>
+
